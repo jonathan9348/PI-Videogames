@@ -58,22 +58,22 @@ export default function rootReducer(state = initialState, action) {
 
             case RATING_ORDER:
                 
-            let orderRating = actionnmhkliohkliohkliohkliohkliohklhkliom
-            state.videogames.sort((a,b) =>{
-                    if(a.name > b.name) return -1;
-                    if(b.name > a.name) return 1;
-                    return 0;
-                })
-                return {
-                    ...state,
-                    videogames: orderRating,
+                const order2 = action.payload === "rating_asc"?
+                state.videogames.sort((a,b) => Number(b.rating) - Number(a.rating))
+                : 
+                state.videogames.sort((a,b) => Number(a.rating) - Number(b.rating))
+            return {
+                ...state,
+                videogames: order2,
                 }
+
+                
             
 
             case FILTER_GENRES:
-                const allVideogames = state.allVideogames;
-                const genresFiltered = action.payload === "All" ? allVideogames
-                    : allVideogames.filter((el) => el.genres.includes(action.payload))
+                const allGames = state.allVideogames;
+                const genresFiltered = action.payload === "All" ? allGames
+                    : allGames.filter((el) => el.genres?.includes(action.payload));
                     if (genresFiltered.length === 0) {
                       alert(`No videogames found for ${action.payload} genre`)
                       return state} else {
