@@ -1,0 +1,38 @@
+.grid-container {
+    display : inline-grid;
+}
+
+.items {
+
+    background-color:#136d7a;
+    border-radius: 90px;
+    margin: 0.8rem;
+    padding: 10px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+
+
+.letters{
+    color: azure;
+}
+
+
+.active {
+    background-color:#233542;
+    
+}
+
+@media only screen and (max-width: 600px) {
+    .items {
+
+        background-color:#136d7a;
+        border-radius: 70px;
+        margin: 0.2rem;
+        padding: 8px;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+}
