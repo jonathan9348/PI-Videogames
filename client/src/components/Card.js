@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 export default function Card({name, image, genres, rating}) {
 
@@ -10,6 +11,7 @@ export default function Card({name, image, genres, rating}) {
             <img className='imagen' src={image} alt='img not found' width= '300px' height= '250px'/>
             <p>Género: {genres}</p>
             <span>{rating}</span>
+            
         </div>
     </div>
   )

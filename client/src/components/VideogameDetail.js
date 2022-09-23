@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { gameDetails } from '../actions';
+import { Link } from 'react-router-dom';
 
 
 
 
-export default function VideogameDetail({ id }) {
+export default function VideogameDetail() {
 
-    const { id } = useParams();
+    const {id} = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,13 +17,14 @@ export default function VideogameDetail({ id }) {
     }, [dispatch, id]);
 
     const games = useSelector((state) => state.details);
+    console.log(games)
 
 
 
     return (
         <div>
             <h1>VideogameDetail</h1>
-            {games.name ? (
+            
                 <div>
                     <h1>{games.name}</h1>
                     <img src={games.img ? games.img : games.image} alt='' width='300px' height='250px' />
@@ -55,10 +57,10 @@ export default function VideogameDetail({ id }) {
                     </Link>
                     
                     </div>
-            ) : (
-                <p>Loading...</p>
-            )}
             
+            
+        
         </div>
-    )
-}
+        )
+    }
+

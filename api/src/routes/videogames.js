@@ -35,6 +35,7 @@ router.get('/', async (req, res) => {
 
             const result = allGamesNames.map(e => {
                 let obj = {
+                    id: e.id,
                     name: e.name,
                     image: e.background_image,
                     genres: e.genres.map(g => {
@@ -56,6 +57,7 @@ router.get('/', async (req, res) => {
             const gamesDb = await Videogame.findAll();
             let gamesAll = getGame.map(e => {
                 let obj = {
+                    id: e.id,
                     name: e.name,
                     image: e.background_image,
                     genres: e.genres.map(g => {
@@ -82,7 +84,7 @@ router.get('/:id', async (req, res) => {
     const { id } = req.params;
 
     if (isNaN(id)) { //si el id no es un numero
-        try {
+        
             const vgDb = await Videogame.findByPk(id, { //buscamos en la base de datos ya que los id autogenerados con uuid siempre seran alfanumericos
                 include: [
                     {
@@ -96,10 +98,6 @@ router.get('/:id', async (req, res) => {
             });
             res.status(200).json(vgDb)
 
-        } catch (err) {
-            res.status(400).send('No existe juego con el Id alfanumérico solicitado')
-
-        }
     } else { //si es un id numerico buscara en la api
         try {
             const vgApi = await axios.get(`https://api.rawg.io/api/games/${id}`, {

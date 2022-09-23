@@ -18,7 +18,7 @@ export function getVideogames(){
      
         const { data } = await axios.get("http://localhost:3001/videogames");
         return dispatch({
-          type: "GET_VIDEOGAMES",
+          type: GET_VIDEOGAMES,
           payload: data,
         });
      
@@ -38,16 +38,16 @@ export function searchVideogames(name){
 }
 
 //Traer videojuegos por id
-export function gameDetails(id){
+export function gameDetails(id){//id es la primary key que busco
     return async function(dispatch){
-        try{
-            const videoDetail = await axios.get(`http://localhost:3001/videogames/${id}`)
-            return dispatch({type: GAME_DETAILS,
-                            payload: videoDetail.data})
-        }catch(err){
-            console.log(err);
-        }
-    }
+       const json= await axios.get(`http://localhost:3001/videogames/${id}`)
+       
+        
+            return dispatch({
+                type:GAME_DETAILS,
+                payload:json.data,
+            })
+}
 }
 
 //Traer todos los géneros

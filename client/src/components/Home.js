@@ -128,11 +128,11 @@ export default function Home() {
               <div key={e.id}>
                 <Link to={'/home/' + e.id}>
                   <Card
-                    id={e.id}
+                    key={e.id}
                     name={e.name}
                     image={e.image}
                     genres={e.genres}
-                    rating={e.rating}
+                    rating={e.rating} 
                     
                   />
                 </Link>

@@ -58,13 +58,19 @@ export default function rootReducer(state = initialState, action) {
 
             case RATING_ORDER:
                 
-                const order2 = action.payload === "rating_asc"?
-                state.videogames.sort((a,b) => Number(b.rating) - Number(a.rating))
-                : 
-                state.videogames.sort((a,b) => Number(a.rating) - Number(b.rating))
-            return {
-                ...state,
-                videogames: order2,
+                let orderRating = action.payload === 'asc_name' ?
+                state.videogames.sort((a,b) =>{
+                    if(a.rating > b.rating) return 1;
+                    if(a.rating < b.rating) return -1;
+                    return 0;
+                }) : state.videogames.sort((a,b) =>{
+                    if(a.rating < b.rating) return 1;
+                    if(a.rating > b.rating) return -1;
+                    return 0;
+                })
+                return {
+                    ...state,
+                    videogames: orderRating,
                 }
 
                 
