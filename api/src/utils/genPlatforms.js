@@ -3,7 +3,8 @@ const {Platform} = require('../db');
 const {API_KEY} = process.env;
 
 async function allPlatforms(){
-    let platformsDb = await Platform.findAll();
+    try{
+        let platformsDb = await Platform.findAll();
 
     if(!platformsDb.length){
         let platformObj = {};
@@ -14,7 +15,13 @@ async function allPlatforms(){
         platMap.forEach(p => Platform.create(p));
         return platMap;
     }
-    return platformsDb;
+    return platformsDb; 
+
+    }catch(err){
+        console.log('err')
+
+    }
+    
 }
 
 module.exports = allPlatforms;

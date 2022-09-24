@@ -3,7 +3,8 @@ const { Genre } = require('../db');
 const { API_KEY } = process.env;
 
 async function genresApi() {
-    const gen = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+    try{
+        const gen = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
     const apiGen = gen.data.results;
 
     apiGen.forEach(e => {
@@ -12,6 +13,12 @@ async function genresApi() {
         })
     })
     return 'Ok';
+
+    }catch(err){
+        console.log('no')
+
+    }
+    
 }
 
 module.exports = genresApi;
