@@ -8,16 +8,13 @@ import '../components/styles/LandingPage.css'
 
 export default function LandingPage() {
   return (
-    <div>
-        <div>
-            <h1>Bienvenidos a Videogames 4all</h1>
-        </div>        
-        <img src={LandingImage} alt=''/>
-        <div className=''>
+    <div className='cont-img'>
+        <img src={LandingImage} alt='landing' className='img-land'/>
+        
             <Link to = '/home'>
-                <button type= 'submit' className='button_home'>Que comiece el juego</button>
+                <button type= 'submit' className='button_home'>PRESS START</button>
             </Link>
-        </div>
+        
     </div>
   )
 }
