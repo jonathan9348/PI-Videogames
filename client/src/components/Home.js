@@ -14,18 +14,18 @@ export default function Home() {
   const generos = useSelector((state) => state.genres);
   const videojuegos = useSelector((state) => state.videogames);
   //paginado
-  const [currentPage, setCurrentPage] = useState(1);
-  const [gamePerPage] = useState(15);
-  const ultimo = currentPage * gamePerPage; // 1 * 15 =15
-  const primero = ultimo - gamePerPage; // 15 - 15 = 0
+  const [actualPage, setActualPage] = useState(1);
+  const [videogamesPerPage, setVideogamesPerPage] = useState(15);
+  const ultimo = actualPage * videogamesPerPage; // 1 * 15 =15
+  const primero = ultimo - videogamesPerPage; // 15 - 15 = 0
   const videog = videojuegos.slice(primero, ultimo); // 0, 15
 
   //orden
   const [order, setOrder] = useState('');
   const [orderRating, setOrderRating] = useState('');
 
-  const paginado = (num) => {
-    setCurrentPage(num);
+  const setPagination = (page) => {
+    return setActualPage(page);
   }
 
   useEffect(() => {
@@ -117,11 +117,7 @@ export default function Home() {
         </div>
       </div>
       <h1>Welcome to Home</h1>
-            <Paginado
-                gamePerPage={gamePerPage}
-                videojuegos={videojuegos.length}
-                paginado={paginado}
-            />
+            
       <div className='layout'>
         {videog?.map((e) => {
           return (
@@ -141,12 +137,12 @@ export default function Home() {
         })};
       </div>
       <div>
-        <Paginado
-          gamePerPage={gamePerPage}
-          videojuegos={videojuegos.length}
-          paginado={paginado}
-          className='cont4'
-        />
+       { <Paginado
+          videogamesPerPage={videogamesPerPage}
+          allVideogames={videojuegos.length}
+          setPagination={setPagination}
+          actualPage={actualPage}
+        />}
       </div>
 
     </div>

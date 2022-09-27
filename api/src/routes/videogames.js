@@ -4,20 +4,99 @@ const { Op } = require('sequelize');
 const axios = require('axios');
 const { API_KEY } = process.env;
 require('dotenv').config();
+const getApiGames = require('../utils/getApiGames')
 
+const getMyData = require('../utils/getMyData');
 
 
 
 const router = Router();
 
+router.get("/", async (req, res, next) => {
+  
+    // Caja de variables ......................
+  let instanceApi;
+  let instanceMine;
+  let name = req.query.name;
+  let page = req.query.page;
+  // ........................................
+  // If no page --> page = 1
+  if (!page) {
+    page = 1;
+  }
+  //.........................................
+
+  try {
+    if (name) {
+      // Si existe un name por ahora lo dejaremos igual
+      instanceApi = await getApiGames(name);
+
+      // Claro.. Puedo hacerlo con arrays
+      instanceMine = await getMyData(name);
+
+    } else { // Case No name
+      
+      instanceApi = await getApiGames();
+      instanceMine = await getMyData();
+
+    }
+
+    // Comienza la devolución ....................................
+    Promise.all([instanceApi, instanceMine]).then((x) => {
+      const [instanceApi, instanceMine] = x;
+
+      let filterCharacters = instanceApi.map((e) => {
+       let obj = {
+            id: e.id,
+            name: e.name,
+            image: e.background_image,
+            genres: e.genres.map(g => {
+                return g.name;
+            }),
+
+        }
+        return obj;
+      });
+
+      let allVideogames = [...instanceMine, ...filterCharacters];
+      // Envío
+
+      // Si no encuentro nada, devolveré un array con solo un objeto preparado
+      if(allVideogames.length === 0){
 
 
-router.get('/', async (req, res) => {
+        let obj = {
+          id: uuidv4(),
+          name: "Not Found",
+          released: "00-00-0000",
+          image: "https://pandagila.com/wp-content/uploads/2020/08/error-404-not-found.jpg",
+          rating: 0,
+          description: "The game has 0 results",
+          genres: [],
+          platforms: [],
+        };
+        return res.send([obj]).status(404);
+      }
+
+      res.send(allVideogames);
+    });
+  } catch (e) {
+    next(e);
+  }
+
+  // Complete: Hay alguna manera de combinar esto con async await? La descubrí, simplemente quería dejarlo en modo Promesas para mantener más diversidad de código
+});
+
+
+
+
+
+/*router.get('/', async (req, res) => {
     try {
         const { name } = req.query;
 
-        const allGamesNames = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`)).data.results;
-        const namesDb = await Videogame.findAll({
+        let allGamesNames = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`)).data.results;
+        let namesDb = await Videogame.findAll({
             where: {
                 name: { [Op.iLike]: `%${name}%` }
             },
@@ -30,7 +109,7 @@ router.get('/', async (req, res) => {
                     }
                 }
             ]
-        })
+        }) 
         if (name) {
 
             const result = allGamesNames.map(e => {
@@ -50,12 +129,32 @@ router.get('/', async (req, res) => {
                 res.status(400).send('No existe el videojuego')
 
         } else {
-            const getGame = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`)).data.results;
-            /*const getGame1 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`)).data.results;
-            const getGame2 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=20`)).data.results;
-            const resGame = getGame.concat(getGame1, getGame2)*/
+            let pageOne = [];
+            let pageTwo = [];
+            let pageThree = [];
+            
+            
+            
+            pageOne = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40`)
+            let uri = pageOne.data.next
+            pageOne = [...pageOne.data.results];
+
+            pageTwo = await axios.get(uri);
+            uri = pageTwo.data.next;
+            pageTwo = [...pageTwo.data.results];
+
+            pageThree = await axios.get(uri);
+            pageThree = [...pageThree.data.results];
+
+            return[...pageOne, ...pageTwo,...pageThree];
+
+
+           
+   
+           // const getGame4 = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=20`)).data.results;
+            /*const resGame = getGame.concat(getGame1, getGame2, getGame3)
             const gamesDb = await Videogame.findAll();
-            let gamesAll = getGame.map(e => {
+            let gamesAll = resGame.map(e => {
                 let obj = {
                     id: e.id,
                     name: e.name,
@@ -67,18 +166,19 @@ router.get('/', async (req, res) => {
                 }
                 return obj;
             });
-            res.json([...gamesDb, ...gamesAll]);//me trae todos los juegos de la base de datos y tambien todos los de la api*/
+            res.json([...gamesDb, ...gamesAll]);//me trae todos los juegos de la base de datos y tambien todos los de la api
         }
-    } catch (err) {
+         
+        } catch (err) {
         res.status(400).json({ err });
-    }
-
-}
+        }*/
 
 
 
 
-); //Ruta terminada
+
+
+
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
