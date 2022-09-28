@@ -1,22 +1,72 @@
-.cont-img{
-
+*{
+    padding: 0px;
+    margin: 0px;
 }
 
-.img-land{
-    width: 100%;
-    height: 100%;
+.cont-txt{
+    display: block;
+    position: absolute;
+    top: 1em;
+    left: 3.5em ;
+    font-family: 'Bungee Spice', cursive;
+    font-size: 50px;
+}
 
+.cont-myName{
+    display: inline-block;
+    position: absolute;
+    bottom: 3px;
+    right: 27em;
+    
+    font-family: 'Bungee Spice', cursive;
+    font-size: 2em;
 }
 
 .button_home{
-    display: block;
-    position:absolute;
-    width: 150px;
-    height: 100px;
-    font-size:larger;
-
+    display: block; /*se comporta como un elemento en linea pero puede recibir propiedades de bloque*/
+    position: absolute;
+    bottom: 2em;
+    left: 45%;
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px gray;
+    
+    line-height: 3;
+    font-family: 'Bungee Spice', cursive;
+    font-size: 1em;
+    animation-name:  iluminar;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    
 }
 
 .button_home:hover{
-    color: blue;
+    cursor: pointer;
+}
+@keyframes iluminar {
+    0%{
+        background-color: papayawhip;
+        box-shadow: 0px 0px 0px 0px;
+
+    }
+
+    50%{
+        background-color: lightyellow;
+        box-shadow: 0px 0px 5px 2.5px gray;
+
+    }
+
+    100%{
+        background-color: yellow;
+        box-shadow: 0px 0px 10px 5px gray;
+    }
+    
+}
+
+
+
+.img-land{
+    width: 100vw;
+    height: 100vh;
 }
