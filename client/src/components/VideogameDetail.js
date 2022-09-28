@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { gameDetails } from '../actions';
 import { Link } from 'react-router-dom';
+import './styles/Detail.css';
 
 
 
@@ -22,25 +23,31 @@ export default function VideogameDetail() {
 
 
     return (
-        <div>
-            <h1>VideogameDetail</h1>
+        <div className='content'>
+        
+            <div >
+                <h1 className='title-page'>Videogame Detail</h1>
+            </div>
             
-                <div>
-                    <h1>{games.name}</h1>
-                    <img src={games.img ? games.img : games.image} alt='' width='300px' height='250px' />
+            
+            <div>
+                <h1 className='title-game'>{games.name}</h1>
+            </div>
+                    
+                    <img src={games.img ? games.img : games.image} alt='' className='img-st' />
 
                     <div>
-                        <h5>
-                            {games.released}
+                        <h5 className='released'>
+                           Released: {games.released}
                         </h5>
                     </div>
 
-                    <div>
-                        <h5>Description:</h5>
-                        <p>{games.description}</p>
+                    <div className='cont-p'>
+                        <h5 className='descr'>Description:</h5>
+                        <p className='lett'>{games.description}</p>
                     </div>
 
-                    <div>
+                    <div className='cont-g'>
                         It's an{' '}
                         {!games.createdInDb
                         ? games.genres + ' '
@@ -48,7 +55,7 @@ export default function VideogameDetail() {
                         game ranked at {games.rating} points.
                     </div>
                     
-                    <div>
+                    <div className='cont-p'>
                         <p>Play it at {games.platforms}</p>
                     </div>
 
@@ -60,7 +67,6 @@ export default function VideogameDetail() {
             
             
         
-        </div>
         )
     }
 

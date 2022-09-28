@@ -11,7 +11,7 @@ export default function validationPost(input) {
         errors.description = 'Hey! make the description'
     }
     if (!input.released) {
-        errors.description = "Hey! Don't forget the date"
+        errors.released = "Hey! Don't forget the date"
     }
     if (input.rating > 5 || input.rating < 0) {
         errors.rating = 'Hey! The rating should be between 0 and 5'

@@ -1,18 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import React from 'react';
+import './styles/Card.css';
+
 
 export default function card({name, image, genres, rating}) {
 
+  
     
   return (
-    <div className='container'>
-        <div className='card'>
-            <h4>{name}</h4>
-            <img className='imagen' src={image} alt='img not found' width= '300px' height= '250px'/>
+    
+        <div className='cont-card'>
+          <div className='card'>
+          <h4>{name}</h4>
+            <img className='card-img' src={image} alt='img not found' />
             <p>Género: {genres}</p>
-            <span>{rating}</span>
+
+          </div>
+            
+            
             
         </div>
-    </div>
+    
   )
 }

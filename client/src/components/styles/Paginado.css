@@ -4,12 +4,20 @@
 
 .items {
 
-    background-color:#136d7a;
-    border-radius: 90px;
+    background-color:#883BCC ;
+    border-radius: 5px;
     margin: 0.8rem;
     padding: 10px;
+    font-family: 'Bungee Spice', cursive;
+    font-size: 1em;
+    text-shadow: 1px 0.1em 0.2em black;
     grid-row-start: 1;
     grid-row-end: 3;
+    cursor: pointer;
+}
+
+.items:hover{
+    background-color: #A676D1 ;
 }
 
 
@@ -20,7 +28,7 @@
 
 
 .active {
-    background-color:#233542;
+    background-color:#ED6CF1 ;
     
 }
 
@@ -28,7 +36,7 @@
     .items {
 
         background-color:#136d7a;
-        border-radius: 70px;
+        border-radius: 50px;
         margin: 0.2rem;
         padding: 8px;
         grid-row-start: 1;

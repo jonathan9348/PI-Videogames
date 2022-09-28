@@ -8,6 +8,7 @@ import Paginado from '../components/Paginado';
 import SearchBar from '../components/SearchBar';
 import '../components/styles/Home.css';
 
+
 export default function Home() {
 
   const dispatch = useDispatch();
@@ -62,23 +63,24 @@ export default function Home() {
 
   return (
     <div className='cont1'>
+      
       <div className='cont2'>
         <div>
           <button className='btn-1' onClick={(e) => {handleClick(e)}}>
-            Cargar videojuegos 
+            Cargar Videojuegos 
           </button>
         </div>
         <div>
           <Link to='/videogame'>
-            <button className='btn-post'>Agregar videojuego nuevo</button>
+            <button className='btn-1'>Agregar Videojuegos </button>
           </Link>
         </div>
-        <div>
+        <div className='search'>
           <SearchBar/>
         </div>
         <div className='filter'>
           <div>
-            <div>Filtar por Géneros</div>
+            <div>Filtar por géneros</div>
             <select className='sbFilter' onChange={(e) => handleFilterGenres(e)}>
               <option value='All' default>Todos</option>
               {generos.map((e) => (
@@ -87,7 +89,7 @@ export default function Home() {
             </select>
           </div>
           <div>
-            <div>Ordenar Alfabeticamente</div>
+            <div>Ordenar por nombre</div>
             <select className='sbFilter' onChange={(e) => handlesortAlf(e)}>
               <option value='All' default>Todos</option>
               <option value='asc_name'>alfabeticamente (A-Z)</option>
@@ -97,7 +99,7 @@ export default function Home() {
           </div>
 
           <div>
-            <div>Ordenar por Rating</div>
+            <div>Ordenar por rating</div>
             <select className='sbFilter' onChange={(e) => handlesortRatg(e)}>
               <option value='All' default>Todos</option>
               <option value='rating_des'>Rating (Menor - Mayor)</option>
@@ -116,7 +118,7 @@ export default function Home() {
 
         </div>
       </div>
-      <h1>Welcome to Home</h1>
+      <h1 className='welc'>Welcome to Home</h1>
             
       <div className='layout'>
         {videog?.map((e) => {
@@ -127,7 +129,7 @@ export default function Home() {
                     key={e.id}
                     name={e.name}
                     image={e.image}
-                    genres={e.genres}
+                    genres={e.genres.toString('').split('')}
                     rating={e.rating} 
                     
                   />
@@ -142,6 +144,7 @@ export default function Home() {
           allVideogames={videojuegos.length}
           setPagination={setPagination}
           actualPage={actualPage}
+          className= 'cont4'
         />}
       </div>
 

@@ -1,0 +1,91 @@
+.layout{
+    display: grid;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-gap:10px;
+  margin: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  
+}
+
+.cont1{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content:space-around;
+  padding: 10px;
+  
+}
+
+.cont2{
+    display:flex;
+  flex-direction: row;
+  justify-content:space-between; 
+  padding: 10px;
+  border:3px solid transparent;
+  width: 1200px;
+}
+
+.cont4{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content:space-around;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+
+.btn-1{
+  background-color:#451C68 ;
+  font-family: 'Rationale', sans-serif;
+  font-size: 1em;
+  text-shadow: 0.1em 0.2em 0.3em black;
+  color: #E4D4F2  ;
+  padding: 1px;
+  cursor: pointer;
+  text-align: center;
+  padding: 8px 24px;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  height: 60px;
+  margin-top: 27px;
+  margin-left: 5px;
+  box-shadow: 0.1em 0.2em 0.3em black;
+}
+
+.btn-1:hover{
+    background-color:#C696F0 ;
+    color: black; 
+}
+
+.sbFilter{
+    margin-top: 8px;
+    border: 2px solid black;
+    height: 40px;
+    background-color: wheat;
+    cursor:grab;
+    box-shadow: 0.1em 0.2em 0.3em black;
+    font-family: 'Rationale', sans-serif;
+    font-size: 0.8em;
+
+  
+}
+
+.filter{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between; 
+  padding: 5px;
+  border:3px solid transparent;
+  width: 1350px;
+  font-family: 'Rationale', sans-serif;
+}
+.welc{
+  font-family: 'Bungee Spice', cursive;
+  font-size: 50px;
+  text-shadow: 1px 0.1em 0.2em black
+}

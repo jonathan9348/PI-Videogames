@@ -1,0 +1,87 @@
+.title{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    
+}
+
+.title-post{
+    display: block;
+    left: 5.5em ;
+    font-family: 'Bungee Spice', cursive;
+    font-size: 70px;
+    text-shadow: 1px 0.1em 0.2em black
+    
+}
+
+.label-input{
+    
+    
+    border: 2px solid black;
+    box-shadow: 0.1em 0.2em 0.3em black;
+    margin-right: 20px;
+    font-family: 'Rationale', sans-serif;
+    font-size: 0.5em;
+}
+
+.tit{
+    display: block;
+    margin-right: 10px;
+}
+
+.cont-plat{
+    background-color: lightblue;
+    opacity: 75%;
+}
+
+.form-name{
+  font-family: 'Rationale', sans-serif;
+  font-size: 1.5em;
+  justify-content: space-between;
+  text-shadow: 0.1em 0.2em 0.3em black;
+  color: black ;
+}
+
+.btn-create{
+    display: inline-block;
+    margin-top: 10em;
+}
+
+.btn-post{
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px 5px black;
+    background-color: #F5D11C ;
+    line-height: 1;
+    font-family: 'Bungee Spice', cursive;
+    font-size: 2em;
+}
+
+.btn-post:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+.btn-back{
+    margin-top: 1em;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px 5px black;
+    background-color: #451C68 ;
+    color:aliceblue;
+    line-height: 2;
+    font-family: 'Rationale', sans-serif;
+    font-size: 1em;
+}
+
+.btn-back:hover{
+    cursor: pointer;
+    background-color: white;
+    color:black
+}
+
+

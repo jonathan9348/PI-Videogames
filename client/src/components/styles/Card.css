@@ -1,35 +1,47 @@
-.container {
+
+
+.cont-card{
     display:flex;
     flex-direction: row;
     justify-content: center;
     align-content:space-around;
     padding: 10px;
     margin: 0;
-
+    
 }
-.card {
-    background-color: rgb(241, 210, 169);
+
+.card{
+    background-color: #7F8BDD;
     height: 200px;
     width: 250px;
     margin: 5px;
     padding: 1px;
-    border:3px solid rgb(128, 21, 95);
+    border:1px solid transparent;
     border-radius: 10px;
+    box-shadow: 0.1em 0.5em 0.3em black;
+}
+
+.card-img{
+    height: 90px;
+    width: 120px; 
+    margin: 1px;
+    padding: 3px;
+    box-shadow: 0.1em 0.5em 0.3em black;
 }
 
 h4 {
+    font-family: 'Tourney', cursive;
+    font-size: 1.2em;
+    border-color: red;
+    color: #451C68  ;
     margin: 2px;
     padding: 1px;  
 }
 
 p {
-    margin: 5px;
+    font-family: 'Rationale', sans-serif;
+    font-size: 0.9em;
+    margin: 12px;
     padding: 1px;  
+    color: black;
 }
- .imag {
-    height: 90px;
-    width: 120px; 
-    margin: 1px;
-    padding: 3px;
-    border: 2px solid black;
- }
